@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Writer Intern Starter Guide — Panduan Praktis & Portal Interaktif</title>
+  <meta name="description"
+    content="Panduan praktis lengkap, workflow 7 tahap, simulator komunikasi, generator nama file, checklist interaktif, dan template siap pakai untuk Technical Writer Intern.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- Search Modal Backdrop -->
+  <div id="search-modal-backdrop" class="search-modal-backdrop" aria-hidden="true">
+    <div class="search-modal-box" role="dialog" aria-modal="true" aria-label="Pencarian Panduan">
+      <div class="modal-input-row">
+        <span style="font-size: 1.2rem; color: var(--text-muted);">🔍</span>
+        <input type="text" id="modal-search-input" class="modal-search-input"
+          placeholder="Cari topik, workflow, checklist, atau template... (ketik untuk mencari)" autocomplete="off">
+        <button id="close-search-btn" class="checklist-action-btn" aria-label="Tutup pencarian">ESC</button>
+      </div>
+      <ul id="search-results-list" class="search-results-list"></ul>
+      <div class="search-modal-footer">
+        <span>Tekan <strong>ESC</strong> untuk menutup</span>
+        <span>Gunakan <strong>↑ ↓</strong> untuk memilih</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-badge">
+          <div class="brand-logo-icon">TW</div>
+          <div class="brand-text">
+            <h1>Intern Guide</h1>
+            <span>Tech Writer Portal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <!-- Group 1 -->
+        <div class="sidebar-nav-group">
+          <div class="sidebar-nav-title">Fondasi & Workflow</div>
+          <ul class="nav-links">
+            <li class="nav-item">
+              <a href="#section-1" class="nav-link active">
+                <span class="nav-num">01</span>
+                <span>Welcome & Intro</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#section-2" class="nav-link">
+                <span class="nav-num">02</span>
+                <span>Before You Start</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#section-3" class="nav-link">
+                <span class="nav-num">03</span>
+                <span>Workflow (7 Tahap)</span>
+                <span class="nav-badge-pill">Pipeline</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#section-4" class="nav-link">
+                <span class="nav-num">04</span>
+                <span>Types of Tasks</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Group 2 -->
+        <div class="sidebar-nav-group">
+          <div class="sidebar-nav-title">Eksekusi & Komunikasi</div>
+          <ul class="nav-links">
+            <li class="nav-item">
+              <a href="#section-5" class="nav-link">
+                <span class="nav-num">05</span>
+                <span>Handle New Task</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#section-6" class="nav-link">
+                <span class="nav-num">06</span>
+                <span>Team Communication</span>
+                <span class="nav-badge-pill">Simulator</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#section-7" class="nav-link">
+                <span class="nav-num">07</span>
+                <span>Tips & Naming Tool</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#section-8" class="nav-link">
+                <span class="nav-num">08</span>
+                <span>Mistakes to Avoid</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Group 3 -->
+        <div class="sidebar-nav-group">
+          <div class="sidebar-nav-title">Checklist & Toolkit</div>
+          <ul class="nav-links">
+            <li class="nav-item">
+              <a href="#section-9" class="nav-link">
+                <span class="nav-num">09</span>
+                <span>Daily / Weekly Checklist</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#section-10" class="nav-link">
+                <span class="nav-num">10</span>
+                <span>Tips from Previous Intern</span>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+              <a href="#section-11" class="nav-link">
+                <span class="nav-num">11</span>
+                <span>Useful Templates</span>
+                <span class="nav-badge-pill">Salin</span>
+              </a>
+            </li> -->
+            <li class="nav-item">
+              <a href="#section-12" class="nav-link">
+                <span class="nav-num">11</span>
+                <span>Final Checklist</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sidebar Progress Tracker -->
+      <div class="sidebar-footer">
+        <div class="intern-progress-card">
+          <div class="intern-progress-head">
+            <span style="color: var(--text-secondary);">Progres Checklist</span>
+            <span id="intern-progress-percent" style="color: var(--emerald-500); font-weight: 700;">0%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div id="intern-progress-fill" class="progress-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Viewport Area -->
+    <main class="main-content">
+      <!-- Top Sticky Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+          <button id="search-trigger-btn" class="search-trigger-btn">
+            <span>🔍 Cari panduan & template...</span>
+            <span class="search-shortcut">Ctrl K</span>
+          </button>
+        </div>
+
+        <div class="header-right">
+          <button id="print-guide-btn" class="action-icon-btn" title="Cetak / Simpan PDF" aria-label="Cetak Panduan">
+            🖨️
+          </button>
+          <button id="theme-toggle-btn" class="action-icon-btn" title="Ganti Mode Tema (Dark/Light)"
+            aria-label="Toggle Tema">
+            <span id="theme-icon">🌙</span>
+          </button>
+          <a href="#section-11" class="btn-primary-header">
+            <span>📋</span>
+            <span>Buka Template</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <div class="content-body">
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+          <div class="hero-banner-container">
+            <img src="assets/hero.jpg" alt="Technical Writer Modern Workspace Illustration" class="hero-img">
+            <div class="hero-overlay-gradient">
+              <div>
+                <span class="hero-overlay-badge">✨ Official Onboarding Resource</span>
+                <h1 class="hero-heading">Technical Writer Intern Starter Guide</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-body-content">
+            <p class="hero-subtitle">A Practical Guide to Get Started, Work, and Grow as a Technical Writer Intern</p>
+
+            <div class="welcome-callout-box">
+              <div class="welcome-callout-icon">💡</div>
+              <div class="welcome-callout-text">
+                <strong>Selamat Datang di Tim!</strong> Panduan ini dirancang sebagai kompas praktis untuk membantu kamu
+                beradaptasi dengan cepat. Bukan sekadar teori, panduan ini berisi pengalaman lapangan, workflow harian,
+                dan standar kerja yang siap kamu terapkan sejak hari pertama.
+              </div>
+            </div>
+
+            <div class="hero-metrics-grid">
+              <div class="metric-card">
+                <div class="metric-value">12</div>
+                <div class="metric-label">Modul Panduan</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">7</div>
+                <div class="metric-label">Tahapan Workflow</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">3</div>
+                <div class="metric-label">Template Siap Pakai</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">12</div>
+                <div class="metric-label">Checklist Verifikasi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Welcome & Introduction -->
+        <section id="section-1" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">1</div>
+              <div>
+                <h2 class="section-title">Welcome & Introduction</h2>
+                <p class="section-subtitle">Memahami peran penting kamu sebagai jembatan informasi teknis</p>
+              </div>
+            </div>
+            <span class="section-chip">🎯 Peran Inti</span>
+          </div>
+
+          <!-- Chibi AI Techie: Welcome Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="welcome">
+            <div class="section-techie-figure pose-wave" title="Techie menyapa kamu! 👋">
+              <img src="assets/techie_welcome.png" alt="Techie Welcome Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">✨ Techie's Welcome Note</div>
+              <div class="section-techie-bubble">
+                "Hai! Selamat datang di dunia Technical Writing 👋 Yuk kenalan dulu dengan role kamu."
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+            Sebagai <strong>Technical Writer Intern</strong>, kamu memegang peran kunci sebagai jembatan informasi
+            antara sistem teknis yang kompleks dan pengguna (baik internal tim maupun klien akhir).
+          </p>
+
+          <!-- Interactive Techie Pose Gallery Strip (Requirement 28 - Visual Consistency) -->
+          <div class="techie-gallery-strip">
+            <div class="techie-gallery-title">
+              <span>🌟 Meet Techie — Your AI Technical Writer Companion</span>
+              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">9 Poses Konsisten (Smart
+                Office Style)</span>
+            </div>
+            <div class="techie-poses-scroll" id="techie-poses-scroll">
+              <div class="techie-pose-card active" data-pose="welcome" title="Pose Menyapa">
+                <img src="assets/techie_welcome.png" alt="Welcome Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Welcome</div>
+              </div>
+              <div class="techie-pose-card" data-pose="laptop" title="Pose Bekerja di Laptop">
+                <img src="assets/techie_laptop.png" alt="Laptop Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Laptop</div>
+              </div>
+              <div class="techie-pose-card" data-pose="writing" title="Pose Mengetik Pesan / Dokumentasi">
+                <img src="assets/techie_writing.png" alt="Writing Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Writing</div>
+              </div>
+              <div class="techie-pose-card" data-pose="thinking" title="Pose Menganalisis Requirement">
+                <img src="assets/techie_thinking.png" alt="Thinking Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Thinking</div>
+              </div>
+              <div class="techie-pose-card" data-pose="explaining" title="Pose Menjelaskan SOP & Guide">
+                <img src="assets/techie_explaining.png" alt="Explaining Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Explaining</div>
+              </div>
+              <div class="techie-pose-card" data-pose="warning" title="Pose Memberi Peringatan Hal Kritis">
+                <img src="assets/techie_warning.png" alt="Warning Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Warning</div>
+              </div>
+              <div class="techie-pose-card" data-pose="checklist" title="Pose Memeriksa Checklist">
+                <img src="assets/techie_checklist.png" alt="Checklist Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Checklist</div>
+              </div>
+              <div class="techie-pose-card" data-pose="celebration" title="Pose Selebrasi Sukses">
+                <img src="assets/techie_celebration.png" alt="Celebration Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Celebration</div>
+              </div>
+              <div class="techie-pose-card" data-pose="thumbsup" title="Pose Jempol Siap Submit">
+                <img src="assets/techie_thumbsup.png" alt="Thumbs-up Pose" class="techie-pose-img">
+                <div class="techie-pose-name">Thumbs-up</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-bottom: 1.5rem;"></div>
+
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Gambaran
+            Singkat Role</h3>
+          <div class="grid-2" style="margin-bottom: 2rem;">
+            <div class="feature-card">
+              <div class="card-icon-circle indigo">🔄</div>
+              <h4 class="card-title">Penerjemah Konteks Teknis</h4>
+              <p class="card-desc">Mengubah logika sistem, baris kode, dan arsitektur yang kompleks menjadi panduan
+                naratif yang mudah dipahami oleh berbagai lapisan pembaca.</p>
+              <div class="tag-list">
+                <span class="tag">Simplifikasi</span>
+                <span class="tag">Struktur Logis</span>
+                <span class="tag">Empati Pengguna</span>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle violet">🛡️</div>
+              <h4 class="card-title">Penjaga Standar Dokumentasi</h4>
+              <p class="card-desc">Memastikan seluruh dokumentasi proyek konsisten, terstruktur, akurat, dan selalu
+                up-to-date terhadap rilis fitur terbaru sistem.</p>
+              <div class="tag-list">
+                <span class="tag">Konsistensi</span>
+                <span class="tag">Versioning</span>
+                <span class="tag">Single Source of Truth</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Scope
+            Pekerjaan Selama Internship</h3>
+          <div class="grid-3">
+            <div class="feature-card">
+              <div class="card-icon-circle cyan">🔍</div>
+              <h4 class="card-title">Eksplorasi & Pengumpulan</h4>
+              <p class="card-desc">Berdiskusi aktif dengan Project Manager (PM), System Analyst (SA), Developer, dan
+                Quality Assurance (QA) untuk menggali flow sistem.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle emerald">✍️</div>
+              <h4 class="card-title">Penyusunan & Penyuntingan</h4>
+              <p class="card-desc">Membuat dan memperbarui SOP, User Guide, Knowledge Base, Test Plan, hingga Minutes of
+                Meeting (MoM) secara berkala.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle amber">🚀</div>
+              <h4 class="card-title">Peningkatan Kualitas Produk</h4>
+              <p class="card-desc">Membantu validasi flow aplikasi melalui sudut pandang dokumentasi serta pengujian
+                mendalam atas usability alur pengguna.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Before You Start -->
+        <section id="section-2" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">2</div>
+              <div>
+                <h2 class="section-title">Before You Start (Persiapan Awal)</h2>
+                <p class="section-subtitle">Tiga pilar esensial yang harus disiapkan sebelum mengambil tugas pertama</p>
+              </div>
+            </div>
+            <span class="section-chip">⚙️ Checklist Awal</span>
+          </div>
+
+          <!-- Chibi AI Techie: Before You Start Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="before-you-start">
+            <div class="section-techie-figure" title="Techie membawa checklist persiapan">
+              <img src="assets/techie_checklist.png" alt="Techie Checklist Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">📋 Techie's Readiness Tip</div>
+              <div class="section-techie-bubble">
+                "Sebelum mulai, pastikan tools, repository, dan communication channel sudah siap."
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Sebelum mulai mengerjakan task pertama, pastikan poin-poin berikut sudah siap, terpasang, dan dapat diakses
+            dengan lancar:
+          </p>
+
+          <div class="grid-3">
+            <div class="feature-card">
+              <div class="card-icon-circle indigo">🛠️</div>
+              <h4 class="card-title">Tools Utama</h4>
+              <p class="card-desc">Pelajari dan siapkan perangkat lunak kerja standar:</p>
+              <ul
+                style="padding-left: 1.2rem; font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                <li><strong>Google Docs / MS Word:</strong> Penulisan dokumen & styling baku.</li>
+                <li><strong>Draw.io:</strong> Pembuatan flowchart dan arsitektur sistem.</li>
+                <li><strong>Snipping Tool / Lightshot:</strong> Pengambilan screenshot bersih dan anotasi.</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle violet">📂</div>
+              <h4 class="card-title">Document Repository</h4>
+              <p class="card-desc">Pahami struktur folder kerja tim di cloud:</p>
+              <ul
+                style="padding-left: 1.2rem; font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                <li>Gunakan <strong>One Drive</strong> resmi tim.</li>
+                <li>Patuhi hierarki folder proyek yang telah ada.</li>
+                <li><strong>Pantangan:</strong> Jangan menyimpan dokumen final secara lokal di laptop tanpa sinkronisasi
+                  cloud!</li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle cyan">💬</div>
+              <h4 class="card-title">Communication Channels</h4>
+              <p class="card-desc">Masuk dan aktifkan notifikasi di grup komunikasi:</p>
+              <ul
+                style="padding-left: 1.2rem; font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.6;">
+                <li>Masuk ke grup tim di <strong>Telegram</strong>.</li>
+                <li>Channel kunci: <code>#proj-documentation</code>, <code>#announcements</code>, dan
+                  <code>#dev-team</code>.
+                </li>
+                <li>Perkenalkan diri secara ramah saat bergabung.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Understanding the Workflow -->
+        <section id="section-3" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">3</div>
+              <div>
+                <h2 class="section-title">Understanding the Workflow</h2>
+                <p class="section-subtitle">Alur 7 tahap dari penerimaan task hingga publikasi dokumen resmi</p>
+              </div>
+            </div>
+            <span class="section-chip">⚡ Siklus Kerja</span>
+          </div>
+
+          <!-- Chibi AI Techie: Workflow Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="workflow">
+            <div class="section-techie-figure" title="Techie menjelaskan workflow timeline">
+              <img src="assets/techie_laptop.png" alt="Techie Workflow Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">⚙️ Techie's Workflow Principle</div>
+              <div class="section-techie-bubble">
+                "Task masuk bukan berarti langsung menulis. Pahami requirement dan kumpulkan informasinya dulu."
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+            Proses pembuatan dokumen mengikuti tahapan terstruktur berikut untuk memastikan akurasi teknis, keselarasan
+            bahasa, dan kualitas hasil akhir. <em>Klik setiap tahap di bawah untuk melihat detail instruksinya:</em>
+          </p>
+
+          <!-- Interactive Workflow Stepper -->
+          <div class="workflow-pipeline" role="tablist" aria-label="Alur Kerja 7 Tahap">
+            <button class="workflow-step-pill active" role="tab" aria-selected="true">
+              <span class="step-number">TAHAP 1</span>
+              <span class="step-name">Task Masuk</span>
+            </button>
+            <button class="workflow-step-pill" role="tab" aria-selected="false">
+              <span class="step-number">TAHAP 2</span>
+              <span class="step-name">Pahami Req</span>
+            </button>
+            <button class="workflow-step-pill" role="tab" aria-selected="false">
+              <span class="step-number">TAHAP 3</span>
+              <span class="step-name">Collect Info</span>
+            </button>
+            <button class="workflow-step-pill" role="tab" aria-selected="false">
+              <span class="step-number">TAHAP 4</span>
+              <span class="step-name">Drafting</span>
+            </button>
+            <button class="workflow-step-pill" role="tab" aria-selected="false">
+              <span class="step-number">TAHAP 5</span>
+              <span class="step-name">Review</span>
+            </button>
+            <button class="workflow-step-pill" role="tab" aria-selected="false">
+              <span class="step-number">TAHAP 6</span>
+              <span class="step-name">Revision</span>
+            </button>
+            <button class="workflow-step-pill" role="tab" aria-selected="false">
+              <span class="step-number">TAHAP 7</span>
+              <span class="step-name">Finalisasi</span>
+            </button>
+          </div>
+
+          <div class="workflow-detail-box">
+            <h4 id="workflow-step-title" class="workflow-detail-title">Tahap 1: Task Masuk</h4>
+            <p id="workflow-step-desc" class="workflow-detail-desc">Terima penugasan arahan langsung dari mentor/lead.
+            </p>
+            <div style="margin-top: 1rem;">
+              <strong style="font-size: 0.88rem; color: var(--text-primary);">Aktivitas & Action Items:</strong>
+              <ul id="workflow-step-checklist" class="workflow-checklist-sub"></ul>
+            </div>
+            <div id="workflow-step-tip"
+              style="margin-top: 1rem; font-size: 0.88rem; color: var(--indigo-500); background: var(--bg-card); padding: 0.6rem 0.9rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Types of Tasks -->
+        <section id="section-4" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">4</div>
+              <div>
+                <h2 class="section-title">Types of Tasks</h2>
+                <p class="section-subtitle">Jenis-jenis dokumen yang umum kamu kerjakan beserta fokus utamanya</p>
+              </div>
+            </div>
+            <span class="section-chip">📚 7 Jenis Dokumen</span>
+          </div>
+
+          <!-- Chibi AI Techie: Types of Task Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="types-of-task">
+            <div class="section-techie-figure" title="Techie membawa berbagai dokumen">
+              <img src="assets/techie_explaining.png" alt="Techie Explaining Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">📚 Techie's Document Guide</div>
+              <div class="section-techie-bubble">
+                "SOP, User Guide, MoM, Technical Documentation... Kamu akan menemukan berbagai jenis dokumentasi di
+                sini."
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="feature-card">
+              <div class="card-icon-circle indigo">📜</div>
+              <h4 class="card-title">SOP (Standard Operating Procedure)</h4>
+              <p class="card-desc">Panduan langkah-demi-langkah operasional yang harus dipatuhi secara ketat. Memuat
+                instruksi rigid, peran PIC, dan batasan tanggung jawab.</p>
+              <div class="tag-list">
+                <span class="tag">Audience: Tim Operasional</span>
+                <span class="tag">Fokus: Kepatuhan & Urutan Baku</span>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle emerald">📖</div>
+              <h4 class="card-title">User Guide / Manual</h4>
+              <p class="card-desc">Panduan penggunaan aplikasi untuk pengguna akhir (end-user) dengan gaya bahasa yang
+                ramah, jelas, terperinci, dan dilengkapi screenshot pendukung.</p>
+              <div class="tag-list">
+                <span class="tag">Audience: Klien & Pengguna Akhir</span>
+                <span class="tag">Fokus: Kemudahan Pemakaian</span>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle cyan">⚙️</div>
+              <h4 class="card-title">Technical Documentation</h4>
+              <p class="card-desc">Dokumentasi teknis mendalam untuk developer (misalnya: API documentation,
+                architecture design, database schema, konfigurasi server).</p>
+              <div class="tag-list">
+                <span class="tag">Audience: Developer & SA</span>
+                <span class="tag">Fokus: Akurasi Logika & Parameter</span>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle amber">💡</div>
+              <h4 class="card-title">Knowledge Article / Base</h4>
+              <p class="card-desc">Artikel solusi masalah teknis umum (troubleshooting), FAQ, atau penjelasan modul
+                independen untuk pusat bantuan tim helpdesk dan internal.</p>
+              <div class="tag-list">
+                <span class="tag">Audience: Tim Support & Pengguna</span>
+                <span class="tag">Fokus: Pemecahan Masalah Cepat</span>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle violet">📝</div>
+              <h4 class="card-title">MoM (Minutes of Meeting)</h4>
+              <p class="card-desc">Catatan resmi jalannya rapat yang mencakup waktu, peserta, keputusan krusial, dan
+                daftar Action Items yang memiliki PIC serta tenggat waktu jelas.</p>
+              <div class="tag-list">
+                <span class="tag">Audience: Seluruh Peserta Rapat</span>
+                <span class="tag">Fokus: Keputusan & Action Items</span>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle rose">🧪</div>
+              <h4 class="card-title">Test Plan & Process Flow</h4>
+              <p class="card-desc">Skenario pengujian alur fungsionalitas aplikasi serta visualisasi proses bisnis
+                menggunakan flowchart standar (Draw.io).</p>
+              <div class="tag-list">
+                <span class="tag">Audience: QA & System Analyst</span>
+                <span class="tag">Fokus: Alur Keputusan (Flowchart)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature-card" style="margin-top: 1.25rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span style="font-size: 1.35rem;">🔄</span>
+              <div>
+                <h4 class="card-title" style="margin-bottom: 0.2rem;">Documentation Update</h4>
+                <p class="card-desc">Memperbarui dokumen versi lama agar selaras dengan penambahan fitur, perubahan UI,
+                  atau deprecation modul pada rilis aplikasi terbaru.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. How to Handle a New Task -->
+        <section id="section-5" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">5</div>
+              <div>
+                <h2 class="section-title">How to Handle a New Task</h2>
+                <p class="section-subtitle">Langkah taktis yang wajib dilakukan saat menerima penugasan dokumen baru</p>
+              </div>
+            </div>
+            <span class="section-chip">🎯 Taktikal</span>
+          </div>
+
+          <!-- Chibi AI Techie: New Task Thinking Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="new-task">
+            <div class="section-techie-figure pose-thinking" title="Techie sedang menganalisis requirement">
+              <img src="assets/techie_thinking.png" alt="Techie Thinking Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">💡 Techie's Golden Rule</div>
+              <div class="section-techie-bubble">
+                "Kalau requirement belum jelas, jangan langsung menebak. Catat information gap dan siapkan pertanyaan."
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="feature-card">
+              <div class="card-icon-circle indigo">🔎</div>
+              <h4 class="card-title">1. Pemeriksaan Awal (Initial Check)</h4>
+              <p class="card-desc">Cek deskripsi task di project board, periksa tenggat waktu (deadline), dan pastikan
+                ketersediaan template dokumen resmi tim sebelum mulai mengetik.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle cyan">❓</div>
+              <h4 class="card-title">2. Daftar Pertanyaan Kunci</h4>
+              <p class="card-desc">Ajukan tiga pertanyaan krusial:</p>
+              <ul
+                style="padding-left: 1.2rem; font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.4rem; line-height: 1.6;">
+                <li><em>'Siapa pengguna utama dokumen ini?'</em></li>
+                <li><em>'Fitur/sistem versi berapa yang dijelaskan?'</em></li>
+                <li><em>'Apakah ada prasyarat hak akses khusus?'</em></li>
+              </ul>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle violet">🧩</div>
+              <h4 class="card-title">3. Identifikasi Information Gap</h4>
+              <p class="card-desc">Bandingkan materi yang ada dengan kebutuhan dokumen. Jika ada alur logika yang belum
+                jelas, segera catat dan jadwalkan sesi klarifikasi singkat.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. How to Communicate with the Team -->
+        <section id="section-6" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">6</div>
+              <div>
+                <h2 class="section-title">How to Communicate with the Team</h2>
+                <p class="section-subtitle">Etika komunikasi profesional dan generator pesan siap kirim</p>
+              </div>
+            </div>
+            <span class="section-chip">💬 Interaktif</span>
+          </div>
+
+          <!-- Chibi AI Techie: Communication Typing Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="communication">
+            <div class="section-techie-figure" title="Techie sedang mengetik chat">
+              <img src="assets/techie_writing.png" alt="Techie Writing Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">💬 Techie's Team Etiquette</div>
+              <div class="section-techie-bubble">
+                "Siapkan pertanyaan yang terstruktur sebelum menghubungi PM atau Dev."
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+            Komunikasi yang jelas dan efisien adalah kunci keberhasilan Technical Writer. Gunakan prinsip-prinsip
+            berikut saat berkoordinasi:
+          </p>
+
+          <div class="grid-3" style="margin-bottom: 1.75rem;">
+            <div class="feature-card">
+              <div class="card-icon-circle indigo">📋</div>
+              <h4 class="card-title">Berkomunikasi dengan PM/Dev</h4>
+              <p class="card-desc">Siapkan daftar pertanyaan terstruktur sebelum bertanya. Hindari bertanya secara acak
+                atau sepenggal-sepenggal tanpa persiapan konteks.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle cyan">⏰</div>
+              <h4 class="card-title">Follow-Up Review Dokumen</h4>
+              <p class="card-desc">Kirimkan pengingat ramah jika dokumen belum direview dalam <strong>1-2 hari
+                  kerja</strong>. Berikan link langsung ke bagian yang butuh persetujuan.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle rose">🚨</div>
+              <h4 class="card-title">Eskalasi Blocker Cepat</h4>
+              <p class="card-desc">Jangan menunda menyampaikan kendala! Sampaikan blocker sesegera mungkin beserta opsi
+                atau usaha solusi yang sudah kamu coba.</p>
+            </div>
+          </div>
+
+          <!-- Interactive Message Composer -->
+          <div class="comm-composer-box">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">💬 Simulator Komunikasi
+                Cerdas</h3>
+              <span
+                style="font-size: 0.75rem; background: var(--indigo-50); color: var(--indigo-600); padding: 3px 8px; border-radius: 999px; font-weight: 700;">Generate
+                & Copy</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+              Pilih tipe pesan, sesuaikan nama dan detail pertanyaan, lalu salin pesan yang sudah diformat rapi untuk
+              dikirimkan melalui Telegram atau Slack:
+            </p>
+
+            <div class="composer-tabs">
+              <button class="composer-tab-btn active" data-type="klarifikasi">Klarifikasi Teknis</button>
+              <button class="composer-tab-btn" data-type="followup">Follow-Up Review</button>
+              <button class="composer-tab-btn" data-type="blocker">Eskalasi Blocker</button>
+            </div>
+
+            <div class="composer-form-grid">
+              <div class="form-group">
+                <label for="comm-recipient">Nama Penerima (PM / Dev / Lead)</label>
+                <input type="text" id="comm-recipient" class="form-input" placeholder="Misal: Mas Dimas">
+              </div>
+              <div class="form-group">
+                <label for="comm-subject">Topik Fitur / Nama Dokumen</label>
+                <input type="text" id="comm-subject" class="form-input" placeholder="Misal: User Guide Modul Checkout">
+              </div>
+              <div class="form-group full-width">
+                <label for="comm-points">Poin Pertanyaan / Catatan (Gunakan nomor)</label>
+                <textarea id="comm-points" class="form-textarea" rows="3"
+                  placeholder="1. Apakah status 'Pending' otomatis berubah ke 'Failed' setelah 24 jam?&#10;2. Jika user membatalkan pesanan, apakah stok langsung di-update?"></textarea>
+              </div>
+              <div class="form-group full-width">
+                <label for="comm-link">Tautan Draf Dokumen (One Drive / Docs)</label>
+                <input type="text" id="comm-link" class="form-input" placeholder="https://onedrive.live.com/...">
+              </div>
+            </div>
+
+            <div class="preview-output-container">
+              <div class="preview-output-header">
+                <span class="preview-output-label">Hasil Format Pesan Siap Kirim:</span>
+                <button id="copy-comm-btn" class="checklist-action-btn"
+                  style="background: var(--indigo-500); color: #fff; border-color: transparent;">
+                  📋 Salin Pesan
+                </button>
+              </div>
+              <pre id="comm-preview-text" class="message-preview-text"></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Documentation Tips -->
+        <section id="section-7" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">7</div>
+              <div>
+                <h2 class="section-title">Documentation Tips & Standar</h2>
+                <p class="section-subtitle">Praktik terbaik agar dokumen selalu berstandar profesional</p>
+              </div>
+            </div>
+            <span class="section-chip">📐 Standar Mutu</span>
+          </div>
+
+          <div class="grid-2" style="margin-bottom: 1.5rem;">
+            <div class="feature-card">
+              <div class="card-icon-circle indigo">📑</div>
+              <h4 class="card-title">Struktur & Hierarki Dokumen</h4>
+              <p class="card-desc">Gunakan hierarki Heading yang konsisten (Heading 1 untuk judul utama, Heading 2 untuk
+                bab fitur, Heading 3 untuk sub-langkah). Selalu sertakan <strong>Daftar Isi (Table of Contents)</strong>
+                untuk dokumen yang melebihi 4 halaman.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="card-icon-circle emerald">📸</div>
+              <h4 class="card-title">Kualitas Tangkapan Layar (Screenshot)</h4>
+              <p class="card-desc">Ambil screenshot yang bersih dengan memotong (crop) hanya bagian yang relevan.
+                Bersihkan tab browser pribadi, dan sertakan penanda visual (kotak merah atau panah penunjuk) agar mata
+                pembaca langsung tertuju pada tombol aksi.</p>
+            </div>
+          </div>
+
+          <!-- Terminology Standard Table -->
+          <div
+            style="background: var(--bg-card-subtle); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem;">
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-primary);">🔤
+              Konsistensi Terminologi & Glosarium</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
+              Hindari mencampuradukkan padanan kata dalam satu dokumen yang sama:
+            </p>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 1px solid var(--border-medium); color: var(--text-muted);">
+                    <th style="padding: 0.5rem;">Konsep / Aksi</th>
+                    <th style="padding: 0.5rem; color: var(--emerald-600);">✅ Istilah Baku Pilihan</th>
+                    <th style="padding: 0.5rem; color: var(--rose-600);">❌ Jangan Dicampur dengan</th>
+                    <th style="padding: 0.5rem;">Catatan Penerapan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.5rem; font-weight: 600;">Mengambil file</td>
+                    <td style="padding: 0.5rem; color: var(--emerald-600); font-weight: 600;">Unduh</td>
+                    <td style="padding: 0.5rem; color: var(--rose-600);">Download / Ambil</td>
+                    <td style="padding: 0.5rem; color: var(--text-secondary);">Konsisten gunakan 'Unduh' untuk dokumen
+                      berbahasa Indonesia.</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.5rem; font-weight: 600;">Mengirim berkas</td>
+                    <td style="padding: 0.5rem; color: var(--emerald-600); font-weight: 600;">Unggah</td>
+                    <td style="padding: 0.5rem; color: var(--rose-600);">Upload / Kirim file</td>
+                    <td style="padding: 0.5rem; color: var(--text-secondary);">Gunakan 'Unggah berkas' atau 'Unggah
+                      dokumen'.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.5rem; font-weight: 600;">Autentikasi Akun</td>
+                    <td style="padding: 0.5rem; color: var(--emerald-600); font-weight: 600;">Masuk / Keluar</td>
+                    <td style="padding: 0.5rem; color: var(--rose-600);">Login / Logout / Sign in</td>
+                    <td style="padding: 0.5rem; color: var(--text-secondary);">Jika label tombol UI memang berbahasa
+                      Inggris, sebut persis label tombolnya dalam tanda petik.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. Common Mistakes to Avoid -->
+        <section id="section-8" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">8</div>
+              <div>
+                <h2 class="section-title">Common Mistakes to Avoid</h2>
+                <p class="section-subtitle">Pelajari kesalahan umum lapangan dan solusi preventifnya</p>
+              </div>
+            </div>
+            <span class="section-chip">⚠️ Do's & Don'ts</span>
+          </div>
+
+          <!-- Chibi AI Techie: Warning Pose (Requirement 24) -->
+          <div class="techie-section-card warning-variant" data-section="common-mistakes">
+            <div class="section-techie-figure pose-warning" title="Techie memberi peringatan!">
+              <img src="assets/techie_warning.png" alt="Techie Warning Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">⚠️ Techie's Warning</div>
+              <div class="section-techie-bubble">
+                "Jangan sampai screenshot yang kamu gunakan ternyata masih versi lama 👀"
+              </div>
+            </div>
+          </div>
+
+          <div class="mistakes-grid">
+            <!-- Mistake 1 -->
+            <div class="mistake-card">
+              <div class="mistake-dont-side">
+                <div class="side-header dont"><span>❌ Kesalahan</span></div>
+                <div class="side-text"><strong>Langsung menulis tanpa memahami requirement:</strong> Mengakibatkan
+                  banyak perombakan total saat tahap review karena salah sasaran target pembaca.</div>
+              </div>
+              <div class="mistake-do-side">
+                <div class="side-header do"><span>✅ Yang Harus Dilakukan</span></div>
+                <div class="side-text"><strong>Klarifikasi scope di awal:</strong> Luangkan waktu 30 menit pertama untuk
+                  membuat kerangka (outline) dan menyelaraskan ekspektasi dengan mentor/PM.</div>
+              </div>
+            </div>
+
+            <!-- Mistake 2 -->
+            <div class="mistake-card">
+              <div class="mistake-dont-side">
+                <div class="side-header dont"><span>❌ Kesalahan</span></div>
+                <div class="side-text"><strong>Tidak mencatat hasil meeting secara real-time:</strong> Mengandalkan
+                  ingatan sering kali membuat detail angka dan keputusan teknis terlewat.</div>
+              </div>
+              <div class="mistake-do-side">
+                <div class="side-header do"><span>✅ Yang Harus Dilakukan</span></div>
+                <div class="side-text"><strong>Catat draft MoM langsung saat meeting:</strong> Tulis keputusan dan
+                  Action Items secara langsung di dokumen bersama agar dapat divalidasi sebelum rapat bubar.</div>
+              </div>
+            </div>
+
+            <!-- Mistake 3 -->
+            <div class="mistake-card">
+              <div class="mistake-dont-side">
+                <div class="side-header dont"><span>❌ Kesalahan</span></div>
+                <div class="side-text"><strong>Screenshot tidak sesuai versi terbaru:</strong> Menggunakan gambar UI
+                  lama yang membuat pengguna bingung saat tampilan aplikasi berubah.</div>
+              </div>
+              <div class="mistake-do-side">
+                <div class="side-header do"><span>✅ Yang Harus Dilakukan</span></div>
+                <div class="side-text"><strong>Verifikasi di staging environment live:</strong> Pastikan seluruh
+                  tangkapan layar diambil langsung dari rilis build terakhir yang sedang diuji QA.</div>
+              </div>
+            </div>
+
+            <!-- Mistake 4 -->
+            <div class="mistake-card">
+              <div class="mistake-dont-side">
+                <div class="side-header dont"><span>❌ Kesalahan</span></div>
+                <div class="side-text"><strong>Lupa follow-up review:</strong> Dokumen tertahan lama tanpa kejelasan di
+                  meja reviewer sehingga terlambat dipublikasikan.</div>
+              </div>
+              <div class="mistake-do-side">
+                <div class="side-header do"><span>✅ Yang Harus Dilakukan</span></div>
+                <div class="side-text"><strong>Pasang reminder sopan H+1 atau H+2:</strong> Buat catatan agenda untuk
+                  menyapa reviewer via Telegram dengan link langsung ke bagian review.</div>
+              </div>
+            </div>
+
+            <!-- Mistake 5 -->
+            <div class="mistake-card">
+              <div class="mistake-dont-side">
+                <div class="side-header dont"><span>❌ Kesalahan</span></div>
+                <div class="side-text"><strong>Menyimpan file di lokal laptop:</strong> Dokumen tidak bisa diakses
+                  anggota tim saat dibutuhkan mendadak atau saat laptop bermasalah.</div>
+              </div>
+              <div class="mistake-do-side">
+                <div class="side-header do"><span>✅ Yang Harus Dilakukan</span></div>
+                <div class="side-text"><strong>Cloud First Policy (One Drive):</strong> Kerjakan dan simpan seluruh file
+                  langsung di shared cloud directory resmi dengan auto-save aktif.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. Daily / Weekly Checklist -->
+        <section id="section-9" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">9</div>
+              <div>
+                <h2 class="section-title">Daily / Weekly Checklist</h2>
+                <p class="section-subtitle">Daftar centang harian untuk menjaga konsistensi dan produktivitas kamu</p>
+              </div>
+            </div>
+            <span class="section-chip">✅ Interaktif</span>
+          </div>
+
+          <!-- Chibi AI Techie: Daily Checklist Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="daily-checklist">
+            <div class="section-techie-figure" title="Techie dengan checklist dan pena">
+              <img src="assets/techie_checklist.png" alt="Techie Daily Checklist Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">📝 Techie's Daily Reminder</div>
+              <div class="section-techie-bubble">
+                "Sedikit demi sedikit, checklist yang rapi bikin pekerjaan lebih terkontrol."
+              </div>
+            </div>
+          </div>
+
+          <div class="checklist-container">
+            <div class="checklist-toolbar">
+              <div class="checklist-counter">
+                <span>Status Harian:</span>
+                <span id="daily-counter" class="checklist-counter-badge">0/6 Selesai</span>
+              </div>
+              <div class="checklist-actions">
+                <button id="reset-daily-btn" class="checklist-action-btn">Reset Checklist</button>
+              </div>
+            </div>
+
+            <ul id="daily-checklist" class="checklist-items-list">
+              <li class="check-item" data-id="daily_1">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Cek task board & atur prioritas hari ini</div>
+                  <div class="check-desc">Tentukan 2-3 tugas utama yang wajib selesai hari ini sebelum membuka pekerjaan
+                    lain.</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="daily_2">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Update progress pekerjaan pada task card masing-masing</div>
+                  <div class="check-desc">Pindahkan kartu ke status 'In Progress', 'In Review', atau sertakan persentase
+                    kemajuan draf.</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="daily_3">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Follow-up pending review dokumen ke PM / Dev</div>
+                  <div class="check-desc">Sapa reviewer jika draf sudah dikirim lebih dari 1 hari kerja dan belum ada
+                    komentar.</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="daily_4">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Lakukan pembaharuan atau perbaikan draf dokumen</div>
+                  <div class="check-desc">Selesaikan catatan revisi yang masuk dari tim teknis dan perbaiki tata letak
+                    formatnya.</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="daily_5">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Rapikan & simpan seluruh file di cloud repository (One Drive)</div>
+                  <div class="check-desc">Pastikan tidak ada file draf tercecer di folder Download atau Desktop laptop
+                    pribadi.</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="daily_6">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Catat blocker atau kendala teknis untuk didiskusikan saat standup meeting
+                  </div>
+                  <div class="check-desc">Siapkan poin kendala akun staging, API bug, atau ketidakjelasan flow bisnis
+                    untuk sesi standup tim.</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 10. Tips from Previous Intern -->
+        <section id="section-10" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">10</div>
+              <div>
+                <h2 class="section-title">Tips from Previous Intern (Legacy Note)</h2>
+                <p class="section-subtitle">5 nasihat emas dari alumni intern terdahulu untuk kesuksesan magangmu</p>
+              </div>
+            </div>
+            <span class="section-chip">🎓 Legacy Advice</span>
+          </div>
+
+          <!-- Chibi AI Techie: Legacy Note Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="legacy-note">
+            <div class="section-techie-figure pose-thinking" title="Techie membaca catatan intern sebelumnya">
+              <img src="assets/techie_default.png" alt="Techie Senior Note Pose" class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">🌟 Techie's Senior Wisdom</div>
+              <div class="section-techie-bubble">
+                "Tips dari intern sebelumnya? Jangan takut bertanya."
+              </div>
+            </div>
+          </div>
+
+          <div class="legacy-grid">
+            <div class="legacy-card">
+              <span class="legacy-badge">Nasihat 1</span>
+              <h4 class="legacy-title">Jangan Pernah Takut Bertanya</h4>
+              <p class="legacy-desc">"Lebih baik bertanya 5 menit di awal daripada menulis dokumen 20 halaman yang
+                ternyata salah arah karena asumsi pribadi. Tim sangat mengapresiasi pertanyaan yang terstruktur!"</p>
+            </div>
+
+            <div class="legacy-card">
+              <span class="legacy-badge">Nasihat 2</span>
+              <h4 class="legacy-title">Pahami Konteks Bisnis</h4>
+              <p class="legacy-desc">"Jangan cuma mencatat langkah klik tombol A ke tombol B. Pahami 'kenapa' fitur itu
+                dibuat dan masalah apa yang ingin diselesaikan bagi klien. Tulisanmu akan terasa jauh lebih bernyawa."
+              </p>
+            </div>
+
+            <div class="legacy-card">
+              <span class="legacy-badge">Nasihat 3</span>
+              <h4 class="legacy-title">Biasakan Mencatat Rapi</h4>
+              <p class="legacy-desc">"Buat buku catatan pribadi (Notion/Obsidian) setiap kali kamu eksplorasi sistem.
+                Catat URL staging, username demo, dan respon error. Ini akan menghemat berjam-jam waktu kerjamu."</p>
+            </div>
+
+            <div class="legacy-card">
+              <span class="legacy-badge">Nasihat 4</span>
+              <h4 class="legacy-title">Inisiatif Sampaikan Blocker</h4>
+              <p class="legacy-desc">"Jika kamu tertahan karena akses akun atau respon API lambat, jangan diam menunggu.
+                Langsung kabari mentor atau lead. Menyampaikan blocker adalah tanda profesionalitas, bukan kelemahan."
+              </p>
+            </div>
+
+            <div class="legacy-card">
+              <span class="legacy-badge">Nasihat 5</span>
+              <h4 class="legacy-title">Simpan Portofolio Referensi</h4>
+              <p class="legacy-desc">"Buat folder arsip pribadi berisi contoh-contoh dokumen yang sudah mendapat
+                approval mentor. Dokumen tersebut akan menjadi cetak biru (blueprint) terbaik untuk tugas-tugas
+                berikutnya."</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 12. Final Checklist -->
+        <section id="section-12" class="content-section">
+          <div class="section-header-wrapper">
+            <div class="section-title-group">
+              <div class="section-number-badge">12</div>
+              <div>
+                <h2 class="section-title">Final Checklist — Before You Submit</h2>
+                <p class="section-subtitle">Lembar periksa kendali mutu tepat sebelum mengirimkan dokumen ke stakeholder
+                </p>
+              </div>
+            </div>
+            <span class="section-chip">🎯 Quality Gate</span>
+          </div>
+
+          <!-- Chibi AI Techie: Final Checklist Thumbs-Up Pose (Requirement 24) -->
+          <div class="techie-section-card" data-section="final-checklist">
+            <div class="section-techie-figure" title="Techie memberikan thumbs-up! 👍">
+              <img src="assets/techie_thumbsup.png" alt="Techie Final Checklist Thumbs-up Pose"
+                class="section-techie-img">
+            </div>
+            <div class="section-techie-content">
+              <div class="section-techie-badge">🚀 Techie's Final Quality Gate</div>
+              <div class="section-techie-bubble">
+                "Sudah cek semuanya? Kalau iya, you're ready to submit! 🚀"
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+            Gunakan lembar periksa ini tepat sebelum kamu mengirimkan dokumen ke mentor atau stakeholder. Pastikan
+            seluruh kriteria telah terpenuhi:
+          </p>
+
+          <div class="checklist-container">
+            <div class="checklist-toolbar">
+              <div class="checklist-counter">
+                <span>Kelengkapan Final:</span>
+                <span id="final-counter" class="checklist-counter-badge">0/6 Terpenuhi</span>
+              </div>
+              <div class="checklist-actions">
+                <button id="all-final-btn" class="checklist-action-btn"
+                  style="background: var(--emerald-50); color: var(--emerald-600); border-color: rgba(16, 185, 129, 0.3);">Centang
+                  Semua</button>
+                <button id="reset-final-btn" class="checklist-action-btn">Reset</button>
+              </div>
+            </div>
+
+            <ul id="final-checklist" class="checklist-items-list">
+              <li class="check-item" data-id="final_1">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Standar Penamaan & Header Sesuai</div>
+                  <div class="check-desc">Apakah judul dokumen, nomor versi (vX.Y), dan header file sudah mengikuti
+                    format baku: <code>[Jenis]_[Project]_v[X.Y].docx</code>?</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="final_2">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Konsistensi Ejaan & Tata Bahasa</div>
+                  <div class="check-desc">Apakah seluruh ejaan (KBBI), istilah teknis (Unduh vs Download), huruf
+                    kapital, dan tanda baca sudah diperiksa tanpa typo?</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="final_3">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Screenshot UI Versi Terkini</div>
+                  <div class="check-desc">Apakah tangkapan layar yang melengkapi dokumen adalah tampilan UI staging/live
+                    versi terbaru dan sudah dibersihkan dari informasi privat?</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="final_4">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Kerapian Format & Tipografi</div>
+                  <div class="check-desc">Apakah format dokumen (hierarki Heading 1/2/3, bullet points, penomoran
+                    langkah, tabel) rapi, tidak terputus janggal, dan mudah dibaca?</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="final_5">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">Pertanyaan Klarifikasi Tuntas</div>
+                  <div class="check-desc">Apakah seluruh daftar pertanyaan klarifikasi dari tim teknis (PM/Developer/QA)
+                    sudah terjawab dan tidak ada placeholder '[TBD]' yang tertinggal?</div>
+                </div>
+              </li>
+              <li class="check-item" data-id="final_6">
+                <div class="custom-checkbox">✓</div>
+                <div class="check-text-content">
+                  <div class="check-title">File Cloud & Hak Akses Terbuka</div>
+                  <div class="check-desc">Apakah file sudah diunggah ke folder One Drive resmi perusahaan dan hak akses
+                    tautan (sharing link) sudah dibuka dengan izin comment/edit bagi tim?</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Footer Note -->
+        <footer
+          style="margin-top: 3rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-subtle); padding-top: 2rem;">
+          <p><strong>Technical Writer Intern Starter Guide</strong> — Dibuat untuk mendukung kesuksesan dan pertumbuhan
+            profesional Anda di tim.</p>
+          <p style="margin-top: 0.35rem;">Gunakan tombol cetak di header jika ingin mengekspor panduan ini menjadi
+            dokumen PDF.</p>
+        </footer>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Floating Chibi AI Assistant (Requirements 22, 23, 25, 26, 27) -->
+  <div id="techie-floating-wrapper" class="techie-floating-wrapper">
+    <!-- Speech Bubble (Requirement 26) -->
+    <div id="techie-speech-bubble" class="techie-speech-bubble">
+      <div class="bubble-header">
+        <div class="bubble-sender">
+          <span>✨</span>
+          <span>Techie</span>
+        </div>
+        <button id="close-speech-bubble-btn" class="bubble-close-btn" title="Tutup pesan">✕</button>
+      </div>
+      <div id="bubble-text" class="bubble-text">
+        Need a quick tip? 👀
+      </div>
+      <button id="bubble-action-btn" class="bubble-action-btn">
+        <span>Tell me more</span>
+        <span>👉</span>
+      </button>
+    </div>
+
+    <!-- Floating Avatar & Ask Button -->
+    <div class="techie-avatar-group" id="techie-avatar-group">
+      <div class="techie-ask-badge" id="techie-ask-badge">
+        <span>✨</span>
+        <span>Ask Techie</span>
+      </div>
+      <div class="techie-avatar-btn" id="techie-avatar-btn" title="Klik untuk tanya Techie AI!">
+        <img id="floating-techie-img" src="assets/techie_default.png" alt="Techie Avatar" class="techie-avatar-img">
+        <span class="techie-status-indicator" title="Techie Online"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mini Chat Panel (Requirements 23 & 27 - AI Assistant Mode) -->
+  <div id="techie-chat-panel" class="techie-chat-panel hidden" role="dialog" aria-label="Techie AI Assistant">
+    <!-- Header -->
+    <div class="chat-panel-header">
+      <div class="chat-header-info">
+        <div class="chat-header-avatar">
+          <img src="assets/techie_welcome.png" alt="Techie Chibi">
+        </div>
+        <div>
+          <div class="chat-header-title">
+            <span>Techie</span>
+            <span
+              style="font-size: 0.72rem; background: var(--indigo-500); color: white; padding: 1px 7px; border-radius: 10px; font-weight: 600;">AI
+              Buddy</span>
+          </div>
+          <div class="chat-header-desc">Technical Writing Companion ✨</div>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button id="clear-chat-btn" class="chat-icon-btn" title="Reset Percakapan">🔄</button>
+        <button id="close-chat-btn" class="chat-icon-btn" title="Tutup Chat Panel">✕</button>
+      </div>
+    </div>
+
+    <!-- Topic Category Chips (Requirement 27 AI Assistant Mode) -->
+    <div class="chat-categories-bar">
+      <button class="chat-category-chip" data-category="workflow">⚡ Workflow</button>
+      <button class="chat-category-chip" data-category="new-task">📝 New Task</button>
+      <button class="chat-category-chip" data-category="documentation">📚 Documentation</button>
+      <button class="chat-category-chip" data-category="checklist">✅ Checklist</button>
+      <button class="chat-category-chip" data-category="communication">💬 Communication</button>
+    </div>
+
+    <!-- Message Stream -->
+    <div id="chat-messages" class="chat-messages-container">
+      <!-- Bot Greeting -->
+      <div class="chat-message bot">
+        <div class="chat-msg-avatar">
+          <img src="assets/techie_welcome.png" alt="Techie">
+        </div>
+        <div class="chat-msg-bubble">
+          <p>Hai! Aku <strong>Techie</strong> 👋</p>
+          <p style="margin-top: 4px;">Aku akan menemani kamu memahami workflow Technical Writer.</p>
+
+          <!-- Quick Questions (Requirement 23) -->
+          <div class="quick-questions-wrapper">
+            <button class="quick-q-btn" data-question="What should I do first?">
+              <span>What should I do first?</span>
+              <span>➔</span>
+            </button>
+            <button class="quick-q-btn" data-question="How does the workflow work?">
+              <span>How does the workflow work?</span>
+              <span>➔</span>
+            </button>
+            <button class="quick-q-btn" data-question="What should I check before submitting?">
+              <span>What should I check before submitting?</span>
+              <span>➔</span>
+            </button>
+            <button class="quick-q-btn" data-question="How should I communicate with Dev?">
+              <span>How should I communicate with Dev?</span>
+              <span>➔</span>
+            </button>
+            <button class="quick-q-btn" data-question="What mistakes should I avoid?">
+              <span>What mistakes should I avoid?</span>
+              <span>➔</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Bar -->
+    <form id="chat-form" class="chat-input-bar">
+      <input type="text" id="chat-user-input" class="chat-input-field" placeholder="Tanya Techie seputar panduan..."
+        autocomplete="off">
+      <button type="submit" class="chat-send-btn" title="Kirim">➤</button>
+    </form>
+  </div>
+
+  <!-- Celebration Modal (Requirement 25) -->
+  <div id="techie-celebration-overlay" class="techie-celebration-overlay" aria-hidden="true">
+    <div class="techie-celebration-modal" role="dialog" aria-modal="true">
+      <div class="celebration-avatar-box">
+        <img src="assets/techie_celebration.png" alt="Techie Celebration">
+      </div>
+      <h3 class="celebration-title">🎉 Luar Biasa!</h3>
+      <p class="celebration-text">
+        Semua kriteria checklist berhasil diselesaikan dengan tuntas! Dokumentasi kamu kini terstruktur, akurat, dan
+        siap untuk diserahkan ke mentor atau stakeholder.
+      </p>
+      <button id="close-celebration-btn" class="celebration-btn">Siap Submit! 🚀</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
