@@ -596,7 +596,7 @@ img {
 
 .hero-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   padding-top: 0.5rem;
   border-top: 1px solid var(--border-subtle);
